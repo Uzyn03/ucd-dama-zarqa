@@ -43,20 +43,20 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --background: oklch(0.97 0.01 85); /* krem muda */
+  --foreground: oklch(0.22 0.02 260); /* abu gelap */
+  --card: oklch(1 0 0);               /* putih */
+  --card-foreground: oklch(0.22 0.02 260);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --primary: oklch(0.85 0.05 30);     /* dusty pink / rose pastel */
+  --primary-foreground: oklch(0.15 0 0); /* gelap */
+  --secondary: oklch(0.9 0.02 150);   /* hijau sage pastel */
+  --secondary-foreground: oklch(0.2 0 0);
+  --muted: oklch(0.95 0.01 85);       /* abu krem */
+  --muted-foreground: oklch(0.4 0.02 260);
+  --muted: oklch(0.95 0.01 85);       /* abu krem */
+  --muted-foreground: oklch(0.4 0.02 260);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
@@ -69,12 +69,13 @@
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
+  --sidebar: oklch(0.9 0.05 30);         /* dusty pink pastel */
+--sidebar-foreground: oklch(0.25 0.02 260); /* teks abu gelap */
+--sidebar-primary: oklch(0.75 0.07 30);     /* pink lebih gelap untuk hover/active */
+--sidebar-primary-foreground: oklch(0.98 0 0); /* putih */
+--sidebar-accent: oklch(0.92 0.02 40);      /* peach pastel */
+--sidebar-accent-foreground: oklch(0.22 0.02 260);
+--sidebar-border: oklch(0.85 0.02 30);      /* border lembut */
   --sidebar-ring: oklch(0.708 0 0);
 }
 

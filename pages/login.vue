@@ -1,84 +1,77 @@
 <template>
   <div
-    class="min-h-screen bg-gradient-to-r from-red-500 to-orange-500 flex items-center justify-center p-4"
+    class="min-h-screen bg-gradient-to-r from-pink-400 to-rose-400 flex items-center justify-center p-4"
   >
-    <div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-md">
-      <!-- Header -->
-      <div class="text-center mb-8">
-        <h1 class="text-2xl font-bold text-gray-800 mb-2">Login</h1>
-      </div>
-
-      <!-- Form -->
-      <form @submit.prevent="handleLogin" class="space-y-2">
-        <!-- Email Field -->
-        <div>
-          <label
-            for="email"
-            class="block text-sm font-medium text-gray-700 mb-2"
+    <Card class="w-full max-w-md">
+      <CardHeader class="text-center mb-4">
+        <CardTitle class="text-2xl font-bold text-gray-800">Login</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <form @submit.prevent="handleLogin" class="space-y-4">
+          <!-- Email Field -->
+          <div>
+            <Label for="email" class="mb-2">Email</Label>
+            <Input
+              id="email"
+              v-model="form.email"
+              type="email"
+              required
+              placeholder="admin@tokoroti.com"
+            />
+          </div>
+          <!-- Password Field -->
+          <div>
+            <Label for="password" class="mb-2">Password</Label>
+            <Input
+              id="password"
+              v-model="form.password"
+              type="password"
+              required
+              placeholder="••••••••"
+            />
+          </div>
+          <!-- Error Message -->
+          <div v-if="errorMessage" class="text-red-600 text-sm text-center">
+            {{ errorMessage }}
+          </div>
+          <!-- Submit Button -->
+          <Button
+            type="submit"
+            :disabled="loading"
+            class="w-full mt-6 bg-gradient-to-r from-pink-400 to-rose-400 text-white py-2 px-4 rounded-md hover:from-pink-500 hover:to-rose-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition duration-200 disabled:opacity-50"
           >
-            Email
-          </label>
-          <input
-            id="email"
-            v-model="form.email"
-            type="email"
-            required
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-            placeholder="admin@tokoroti.com"
-          />
+            <span v-if="loading">Memproses...</span>
+            <span v-else>Masuk</span>
+          </Button>
+        </form>
+        <!-- Register Link -->
+        <div class="mt-6 text-center">
+          <p class="text-gray-600 text-sm">
+            Belum punya akun admin?
+            <NuxtLink
+              to="/register"
+              class="text-rose-500 hover:text-rose-600 font-medium"
+            >
+              Daftar di sini
+            </NuxtLink>
+          </p>
         </div>
-
-        <!-- Password Field -->
-        <div>
-          <label
-            for="password"
-            class="block text-sm font-medium text-gray-700 mb-2"
-          >
-            Password
-          </label>
-          <input
-            id="password"
-            v-model="form.password"
-            type="password"
-            required
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-            placeholder="••••••••"
-          />
-        </div>
-
-        <!-- Error Message -->
-        <div v-if="errorMessage" class="text-red-600 text-sm text-center">
-          {{ errorMessage }}
-        </div>
-
-        <!-- Submit Button -->
-        <button
-          type="submit"
-          :disabled="loading"
-          class="w-full mt-6 bg-gradient-to-r from-red-500 to-orange-500 text-white py-2 px-4 rounded-md hover:from-red-600 hover:to-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition duration-200 disabled:opacity-50"
-        >
-          <span v-if="loading">Memproses...</span>
-          <span v-else>Masuk</span>
-        </button>
-      </form>
-
-      <!-- Register Link -->
-      <div class="mt-6 text-center">
-        <p class="text-gray-600 text-sm">
-          Belum punya akun admin?
-          <NuxtLink
-            to="/register"
-            class="text-orange-600 hover:text-orange-700 font-medium"
-          >
-            Daftar di sini
-          </NuxtLink>
-        </p>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   </div>
 </template>
 
 <script setup>
+import { ref, reactive } from "vue";
+import { useRouter } from "#app"; // Ensure definePageMeta is imported from #app
+import { useAuth } from "~/composables/useAuth"; // Adjust path if necessary
+
+// shadcn/ui components
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 // Redirect if already authenticated
 definePageMeta({
   layout: false,
